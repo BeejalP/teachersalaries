@@ -1,0 +1,19 @@
+/*
+                Place transport file (.cpt) in the location with the related data files.
+                Delete 32-bit format file (.sas7bcat) provided. 
+                Running code below on a machine running SAS (64-bit).
+                Do this for each format file.
+*/
+
+/* Location of transport (.cpt) file */
+%let location = C:\User\Location; 
+
+/* Desired name of format file (.sas7bcat) */
+%let name = CY07_MS_FMT_STU_QQQ; 
+
+/*******************************************/
+libname loc "&location.";  
+filename trans "&location.\&name..cpt";  
+
+proc cimport infile=trans lib=loc;
+run;
